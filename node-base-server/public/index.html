@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node server..</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .accordion {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+    }
+
+    .accordion-header {
+      padding: 15px;
+      background-color: #595858;
+      color: white;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      text-align: left;
+      width: 100%;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      background-color: #3d3d3d;
+    }
+
+    .accordion-content {
+      padding: 15px;
+      background-color: #f9f9f9;
+      display: none;
+      border-top: 1px solid #ddd;
+    }
+
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to node server</h1>
+  <h2>Here are the list of available APIs  </h2>
+
+  <div class="accordion">
+    <button class="accordion-header">GET - <strong>/user/users</strong></button>
+    <div class="accordion-content">
+      <h3>Request: </h3>
+      <p>-NA-</p>
+      <h3>Response: </h3>
+      <p>
+        <code>
+          <pre>
+         {
+          "success": true,
+          "message": "User data found",
+          "data": [
+                  {
+                  "id": 15,
+                  "name": "Bikram",
+                  "surname": "Kumar",
+                  "address": "Mansarover",
+                  "city": "jaipur",
+                  "state": "rajasthan",
+                  "country": "india",
+                  "email": "bikram@yopmail.com",
+                  "password": "1234567",
+                  "otp": 0,
+                  "otp_expiry_time": 0,
+                  "createdAt": "2024-10-05T11:18:14.000Z",
+                  "updatedAt": "2024-10-05T11:18:14.000Z"
+              }
+          ]
+      }
+    </pre>
+      </code>
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header">POST - <strong>/user/adduser</strong></button>
+    <div class="accordion-content">
+      <h3>Request: </h3>
+      <p>
+        <code>
+          <pre>
+        {
+          name:Rajesh,
+          surname:Kumar,
+          address:Mansarover,
+          city:jaipur,
+          state:rajasthan,
+          country:india,
+          email:rajesh12@yopmail.com,
+          password:1234567
+        }
+        </pre>
+        </code>
+      </p>
+      <h3>Response: </h3>
+      <p>
+        <pre>
+        {
+          "success": true,
+          "message": "User created successfully",
+          "data": {
+              "id": 11,
+              "user_id": 19,
+              "type": "Register",
+              "device_details": "{\"os\":{},\"client\":{\"type\":\"library\",\"name\":\"Postman Desktop\",\"version\":\"7.42.0\"},\"device\":{\"id\":\"\",\"type\":\"\",\"brand\":\"\",\"model\":\"\",\"info\":null}}",
+              "updatedAt": "2024-10-11T05:57:23.009Z",
+              "createdAt": "2024-10-11T05:57:23.009Z"
+          }
+      }
+      </pre>
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header">POST - <strong>/user/login</strong></button>
+    <div class="accordion-content">
+      <h3>Request: </h3>
+      <p>
+        <code>
+          <pre>
+        {
+          email:rajesh@yopmail.com,
+          password:123456789
+        }
+        </pre>
+        </code>
+      </p>
+      <h3>Response: </h3>
+      <p>
+        <pre>
+          {
+            "success": true,
+            "message": "logged in successfully",
+            "data": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhamVzaEB5b3BtYWlsLmNvbSIsInVzZXJfaWQiOjE2LCJpYXQiOjE3Mjg2MjY2OTAsImV4cCI6MTcyODYzNzQ5MH0.enhKRfKQnXmb-aIlRMgxcJgNueOZ9aErsgEXewpgMnE"
+        }
+      </pre>
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header">POST - <strong>/user/forgot_password</strong></button>
+    <div class="accordion-content">
+      <h3>Request: </h3>
+      <p>
+        <code>
+          <pre>
+        {
+          email:rajesh@yopmail.com
+         
+        }
+        </pre>
+        </code>
+      </p>
+      <h3>Response: </h3>
+      <p>
+        <pre>
+          {
+            "success": true,
+            "message": "User found, please enter otp,  otp will be valid for next 15 minutes",
+            "data": {
+                "email": "rajesh@yopmail.com",
+                "otp": 716553,
+                "expiry_time": 1728627653
+            }
+        }
+      </pre>
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header">POST - <strong>/user/verify_otp</strong></button>
+    <div class="accordion-content">
+      <h3>Request: </h3>
+      <p>
+        <code>
+          <pre>
+        {
+          email:rajesh@yopmail.com,
+          otp:595727
+         
+        }
+        </pre>
+        </code>
+      </p>
+      <h3>Response: </h3>
+      <p>
+        <pre>
+          {
+            "success": true,
+            "message": "The OTP successfully validated, please set your new password",
+            "data": {
+                "email": "rajesh@yopmail.com",
+                "name": "Rajesh",
+                "id": 16
+            }
+        }
+      </pre>
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header">POST - <strong>/user/reset_password</strong></button>
+    <div class="accordion-content">
+      <h3>Request: </h3>
+      <p>
+        <code>
+          <pre>
+        {
+          id:16,
+          password:123456789,
+          re_password:123456789
+         
+        }
+        </pre>
+        </code>
+      </p>
+      <h3>Response: </h3>
+      <p>
+        <pre>
+          {
+            "success": true,
+            "message": "Great! your password has been changed, please login with new password on the site.",
+            "data": {
+                "id": 13,
+                "user_id": 16,
+                "type": "Reset Password",
+                "device_details": "{\"os\":{},\"client\":{\"type\":\"library\",\"name\":\"Postman Desktop\",\"version\":\"7.42.0\"},\"device\":{\"id\":\"\",\"type\":\"\",\"brand\":\"\",\"model\":\"\",\"info\":null}}",
+                "updatedAt": "2024-10-11T06:11:48.081Z",
+                "createdAt": "2024-10-11T06:11:48.081Z"
+            }
+        }
+      </pre>
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header">POST - <strong>/user/user_profile</strong></button>
+    <div class="accordion-content">
+      <h3>Request: </h3>
+      <p>
+        <code>
+          <pre>
+        {
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhamVzaEB5b3BtYWlsLmNvbSIsInVzZXJfaWQiOjE2LCJpYXQiOjE3Mjg1NTYzMzMsImV4cCI6MTcyODU2NzEzM30.SnIkQJfNGQV5jQrEVkfSSrfoenqGh78cNXwfMeAk_dk
+         
+        }
+        </pre>
+        </code>
+      </p>
+      <h3>Response: </h3>
+      <p>
+        <pre>
+          {
+            "success": true,
+            "message": "User details found !",
+            "data": {
+                "id": 16,
+                "name": "Rajesh",
+                "surname": "Kumar",
+                "address": "Mansarover",
+                "city": "jaipur",
+                "state": "rajasthan",
+                "country": "india",
+                "email": "rajesh@yopmail.com",
+                "password": "123456789",
+                "otp": 716553,
+                "otp_expiry_time": 1728627653,
+                "createdAt": "2024-10-05T11:44:10.000Z",
+                "updatedAt": "2024-10-11T06:11:45.000Z"
+            }
+        }
+      </pre>
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header">POST - <strong>/user/user_activity</strong></button>
+    
+      <div class="accordion-content">
+        <h3>Request: </h3>
+        <p>
+          <code>
+            <pre>
+          {
+            token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhamVzaEB5b3BtYWlsLmNvbSIsInVzZXJfaWQiOjE2LCJpYXQiOjE3Mjg1NTYzMzMsImV4cCI6MTcyODU2NzEzM30.SnIkQJfNGQV5jQrEVkfSSrfoenqGh78cNXwfMeAk_dk
+           
+          }
+          </pre>
+          </code>
+        </p>
+        <h3>Response: </h3>
+        <p>
+          <code>
+          <pre>
+            {
+              "success": true,
+              "message": "User Activities found",
+              "data": [
+                  {
+                      "id": 13,
+                      "user_id": 16,
+                      "type": "Reset Password",
+                      "device_details": "{\"os\":{},\"client\":{\"type\":\"library\",\"name\":\"Postman Desktop\",\"version\":\"7.42.0\"},\"device\":{\"id\":\"\",\"type\":\"\",\"brand\":\"\",\"model\":\"\",\"info\":null}}",
+                      "createdAt": "2024-10-11T06:11:48.000Z",
+                      "updatedAt": "2024-10-11T06:11:48.000Z"
+                  },
+                  {
+                    "id": 13,
+                    "user_id": 16,
+                    "type": "Reset Password",
+                    "device_details": "{\"os\":{},\"client\":{\"type\":\"library\",\"name\":\"Postman Desktop\",\"version\":\"7.42.0\"},\"device\":{\"id\":\"\",\"type\":\"\",\"brand\":\"\",\"model\":\"\",\"info\":null}}",
+                    "createdAt": "2024-10-11T06:11:48.000Z",
+                    "updatedAt": "2024-10-11T06:11:48.000Z"
+                }
+              ]
+          }
+        </pre>
+      </code>
+        </p>
+      </div>
+    
+  </div>
+
+
+  <script>
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        content.classList.toggle('active'); // Toggle the active class
+      });
+    });
+  </script>
+
+</body>
+</html>

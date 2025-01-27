@@ -1,0 +1,19 @@
+{
+    "development": {
+      "use_env_variable" : false,
+      "db_username": "root",
+      "db_password": "",
+      "db_name": "react_app_db",
+      "db_host": "localhost",
+      "db_dialect": "mysql"
+    },
+    "production": {
+      "use_env_variable" : false,
+      "db_username": "root",
+      "db_password": "",
+      "db_name": "react_app_db",
+      "db_host": "localhost",
+      "db_dialect": "mysql"
+    }
+  }
+  
